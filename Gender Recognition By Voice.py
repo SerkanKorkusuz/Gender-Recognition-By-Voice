@@ -17,7 +17,22 @@ myData.label = [1 if each == "female" else 0 for each in myData.label]
 
 label = myData.label.values
 att = myData.drop(["label"], axis = 1)
+
+#normalization
+att = (att - np.min(att)) / (np.max(att) - np.min(att))
 #print(att)
-#print(label)
+
+#train test split
+att_train, att_test, label_train, label_test = train_test_split(att, label, test_size = 0.3, random_state = 42)
+att_train = att_train.T
+att_test = att_test.T
+label_train = label_train.T
+label_test = label_test.T
+#print(att_test, "\n", label_test)
+#print("att_train: ", att_train.shape)
+#print("att_test: ", att_test.shape)
+#print("label_train: ", label_train.shape)
+#print("label_test: ", label_test.shape)
+
 
 #... to be continued
