@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plot
 from sklearn.model_selection import train_test_split
 
-source_url = ("C:\\Users\\casper\\Desktop\\Machine Learning\\Machine Learning in Python\\Udemy-DATAI\\Logistic Regression\\Gender Recognition by Voice\\voice.csv")
+source_url = ("https://raw.githubusercontent.com/SerkanKorkusuz/Gender-Recognition-By-Voice/master/voice.csv")
 
 myData = pd.read_csv(source_url, header = 0)
 #print(myData.info())
