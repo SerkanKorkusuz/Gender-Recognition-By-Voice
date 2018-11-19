@@ -19,3 +19,5 @@ label = myData.label.values
 att = myData.drop(["label"], axis = 1)
 #print(att)
 #print(label)
+
+#... to be continued
