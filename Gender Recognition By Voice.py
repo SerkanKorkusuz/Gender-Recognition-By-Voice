@@ -34,5 +34,15 @@ label_test = label_test.T
 #print("label_train: ", label_train.shape)
 #print("label_test: ", label_test.shape)
 
+#initializing weights and bias
+def initialize(dimension):
+    w = np.full((dimension, 1), 0.01)
+    bias = 0.0
+    return w, bias
+
+#sigmoid function
+def sigmoid(z):
+    label_sigmoid = 1.0 / (1 + np.exp(-z))
+    return label_sigmoid
 
 #... to be continued
