@@ -45,4 +45,16 @@ def sigmoid(z):
     label_sigmoid = 1.0 / (1 + np.exp(-z))
     return label_sigmoid
 
+#forward and backward propagation
+def forward_backward_pro(w, bias, att_train, label_train):
+    z = np.dot(w.T, att_train) + bias
+    label_sigmoid = sigmoid(z)
+    loss = -label_train * np.log(label_sigmoid) - (1 - label_train) * np.log(1 - label_sigmoid)
+    cost = (np.sum(loss)) / att_train.shape[1]
+
+    derivative_weight = (np.dot(att_train,((label_sigmoid - label_train).T))) / att_train.shape[1] 
+    derivative_bias = np.sum(label_sigmoid - label_train) / att_train.shape[1]
+    gradients = {"derivative_weight": derivative_weight, "derivative_bias": derivative_bias}
+    return cost, gradients
+
 #... to be continued
