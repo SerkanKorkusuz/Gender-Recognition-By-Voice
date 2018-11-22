@@ -57,4 +57,26 @@ def forward_backward_pro(w, bias, att_train, label_train):
     gradients = {"derivative_weight": derivative_weight, "derivative_bias": derivative_bias}
     return cost, gradients
 
+def recovery(w, bias, att_train, label_train, learning_rate, iteration):
+    cost_list = []
+    cost_list_interval = []
+    index = []
+    for i in range(iteration):
+        cost, gradients = forward_backward_pro(w, bias, att_train, label_train)
+        cost_list.append(cost)
+        w = w - learning_rate * gradients["derivative_weight"]
+        bias = bias - learning_rate * gradients["derivative_bias"]
+        if i % 400 == 0:
+            cost_list_interval.append(cost)
+            index.append(i)
+            print("Cost after {}. iteration is {}.".format(i, cost))
+        model_parameters = {"weight" : w, "bias" : bias}
+    plot.plot(index, cost_list_interval)
+    plot.xticks(index, rotation = "vertical")
+    plot.xlabel("Number of Iterations")
+    plot.ylabel("Cost")
+    plot.show()
+    return model_parameters, gradients, cost_list
+
+
 #... to be continued
