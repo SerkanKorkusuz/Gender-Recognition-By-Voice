@@ -78,5 +78,15 @@ def recovery(w, bias, att_train, label_train, learning_rate, iteration):
     plot.show()
     return model_parameters, gradients, cost_list
 
+def prediction(w, bias, att_test):
+    label_sigmoid = sigmoid(np.dot(w.T, att_test) + bias)
+    label_predicted = np.zeros((1, att_test.shape[1]))
+    for j in range(label_sigmoid.shape[1]):
+        if label_sigmoid[0, j] <= 0.5:
+            label_predicted[0, j] = 0
+        else:
+            label_predicted[0, j] = 1
+    return label_predicted
+
 
 #... to be continued
