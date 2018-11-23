@@ -88,5 +88,14 @@ def prediction(w, bias, att_test):
             label_predicted[0, j] = 1
     return label_predicted
 
+def logistic_regression(att_train, label_train, att_test, label_test, learning_rate, iteration):
+    dimension = att_train.shape[0]
+    w, bias = initialize(dimension)
+    model_parameters, gradients, cost_list = recovery(w, bias, att_train, label_train, learning_rate, iteration)
+    label_predicted = prediction(model_parameters["weight"], model_parameters["bias"], att_test)
+    print("Test accuracy: {}".format(100 - np.mean(np.abs(label_predicted - label_test) * 100)))
+
+logistic_regression(att_train, label_train, att_test, label_test, learning_rate = 0.1, iteration = 2000)
+
 
 #... to be continued
