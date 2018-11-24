@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plot
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 
 source_url = ("https://raw.githubusercontent.com/SerkanKorkusuz/Gender-Recognition-By-Voice/master/voice.csv")
 
