@@ -17,3 +17,7 @@ att = myData.drop(["label"], axis = 1)
 att = (att - np.min(att)) / (np.max(att) - np.min(att))
 
 att_train, att_test, label_train, label_test = train_test_split(att, label, test_size = 0.3, random_state = 42)
+
+my_model = LogisticRegression()
+my_model.fit(att_train, label_train)
+print("Test accuracy (with the help of skicit-learn class): {}".format(my_model.score(att_test.T, label_test.T) * 100))
